@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { Navigate } from 'react-router-dom'
 import useAuth from '../auth/useAuth'
 
-const PrivateRoute = ({ children }) => {
+const PublicRoute = ({ children }) => {
   const { user } = useAuth()
-  return user ? children : <Navigate to="/login" />
+  return user ? <Navigate to="/projects" /> : children
 }
 
-PrivateRoute.propTypes = {
+PublicRoute.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export default PrivateRoute
+export default PublicRoute

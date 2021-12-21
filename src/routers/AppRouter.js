@@ -1,5 +1,6 @@
 import React from 'react'
 import PrivateRoute from './PrivateRoute'
+import PublicRoute from './PublicRoute'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Layout } from '../components/layouts'
 import {
@@ -19,9 +20,33 @@ const AppRouter = () => {
       {/* <Layout> is a wrapper for all pages. */}
       <Layout>
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/login" element={<LoginPage />} />
-          <Route exact path="/register" element={<RegisterPage />} />
+          <Route
+            exact
+            path="/"
+            element={
+              <PublicRoute>
+                <HomePage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="/login"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            exact
+            path="/register"
+            element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            }
+          />
           <Route
             exact
             path="/account"
