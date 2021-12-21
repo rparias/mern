@@ -78,7 +78,7 @@ const AppRouter = () => {
             exact
             path="/admin/users"
             element={
-              <PrivateRoute>
+              <PrivateRoute hasRole="admin">
                 <UsersPage />
               </PrivateRoute>
             }
