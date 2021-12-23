@@ -4,6 +4,7 @@ import PublicRoute from './PublicRoute'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Layout } from '../components/layouts'
 import roles from '../helpers/roles'
+import routes from './routes'
 import {
   AccountPage,
   HomePage,
@@ -23,7 +24,7 @@ const AppRouter = () => {
         <Routes>
           <Route
             exact
-            path="/"
+            path={routes.home}
             element={
               <PublicRoute>
                 <HomePage />
@@ -32,7 +33,7 @@ const AppRouter = () => {
           />
           <Route
             exact
-            path="/login"
+            path={routes.login}
             element={
               <PublicRoute>
                 <LoginPage />
@@ -41,7 +42,7 @@ const AppRouter = () => {
           />
           <Route
             exact
-            path="/register"
+            path={routes.register}
             element={
               <PublicRoute>
                 <RegisterPage />
@@ -50,7 +51,7 @@ const AppRouter = () => {
           />
           <Route
             exact
-            path="/account"
+            path={routes.account}
             element={
               <PrivateRoute>
                 <AccountPage />
@@ -59,7 +60,7 @@ const AppRouter = () => {
           />
           <Route
             exact
-            path="/projects"
+            path={routes.projects}
             element={
               <PrivateRoute>
                 <ProjectsPage />
@@ -68,7 +69,7 @@ const AppRouter = () => {
           />
           <Route
             exact
-            path="/project/:id"
+            path={routes.project()}
             element={
               <PrivateRoute>
                 <ProjectPage />
@@ -77,7 +78,7 @@ const AppRouter = () => {
           />
           <Route
             exact
-            path="/admin/users"
+            path={routes.admin.users}
             element={
               <PrivateRoute hasRole={roles.ADMIN}>
                 <UsersPage />

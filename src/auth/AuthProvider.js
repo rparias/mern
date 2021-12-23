@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  // const initialUser = { id: 1, role: 'admin' }
+  const initialUser = null
+  const [user, setUser] = useState(initialUser)
 
   const contextValue = {
     user
