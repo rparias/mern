@@ -3,6 +3,7 @@ import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Layout } from '../components/layouts'
+import roles from '../helpers/roles'
 import {
   AccountPage,
   HomePage,
@@ -78,7 +79,7 @@ const AppRouter = () => {
             exact
             path="/admin/users"
             element={
-              <PrivateRoute hasRole="admin">
+              <PrivateRoute hasRole={roles.ADMIN}>
                 <UsersPage />
               </PrivateRoute>
             }
