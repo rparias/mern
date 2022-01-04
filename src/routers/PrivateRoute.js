@@ -2,13 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Navigate } from 'react-router-dom'
 import useAuth from '../auth/useAuth'
+import routes from './routes'
 
 const PrivateRoute = ({ hasRole: role, children }) => {
-  const { user } = useAuth()
+  const { hasRole, isLogged } = useAuth()
 
-  if (role && user?.role !== role) return <Navigate to="/" />
+  if (role && !hasRole(role)) return <Navigate to={routes.home} />
 
-  return user ? children : <Navigate to="/login" />
+  return isLogged() ? children : <Navigate to={routes.login} />
 }
 
 PrivateRoute.propTypes = {
