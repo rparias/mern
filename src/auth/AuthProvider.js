@@ -8,6 +8,9 @@ const AuthProvider = ({ children }) => {
   // const initialUser = null
   const [user, setUser] = useState(initialUser)
 
+  const login = (userCredentials) => setUser(initialUser)
+  const logout = () => setUser(null)
+
   // !! for casting user to boolean
   const isLogged = () => !!user
 
@@ -16,7 +19,9 @@ const AuthProvider = ({ children }) => {
   const contextValue = {
     user,
     isLogged,
-    hasRole
+    hasRole,
+    login,
+    logout
   }
 
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

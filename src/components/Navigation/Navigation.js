@@ -2,8 +2,10 @@ import React from 'react'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import routes from '../../routers/routes'
+import useAuth from '../../auth/useAuth'
 
 const Navigation = () => {
+  const { logout } = useAuth()
   return (
     <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
       <Navbar.Brand as={NavLink} to={routes.home}>
@@ -30,6 +32,9 @@ const Navigation = () => {
           </Nav.Link>
           <Nav.Link as={NavLink} to={routes.account}>
             Account
+          </Nav.Link>
+          <Nav.Link to={routes.account} onClick={logout}>
+            Logout
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
