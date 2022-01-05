@@ -1,14 +1,20 @@
 import React, { createContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-  const initialUser = { id: 1, role: 'admin' }
-  // const initialUser = null
-  const [user, setUser] = useState(initialUser)
+  const history = useNavigate()
+  const [user, setUser] = useState(null)
 
-  const login = (userCredentials) => setUser(initialUser)
+  const login = (userCredentials, fromLocation) => {
+    setUser({ id: 1, role: 'admin' })
+    if (fromLocation) {
+      history.push(fromLocation)
+    }
+  }
+
   const logout = () => setUser(null)
 
   // !! for casting user to boolean
